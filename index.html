@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+      body{
+        margin: 0;
+      }
+
+      #view{
+        width: 50%;
+        margin: auto;
+      }
+
+      #header{
+        text-align: center;
+      }
+
+      #name{
+        display: inline-block;
+        margin-top: 50px;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        font-size: 48px;
+      }
+
+      #title{
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        font-size: 20px;
+      }
+
+      #contact{
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        font-size: 10px;
+        text-align: right;
+        margin-right: 20%;
+      }
+
+      #nav{
+        margin-top: 50px;
+        display: flex;
+        justify-content: space-evenly;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        font-size: 13px;
+        font-weight: bold;
+      }
+
+      .nav-item{
+        width: 100%;
+        text-align: center;
+        padding: 10px 0;
+        cursor: pointer;
+        user-select: none;
+      }
+
+      .nav-item:hover{
+        background-color: rgba(211, 211, 211, 0.5);
+      }
+
+      #content{
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        font-size: 13px;
+        padding-top: 10px;
+      }
+
+      #kns{
+        display: none;
+      }
+
+      #portfolio{
+        display: none;
+      }
+
+      #port-item{
+        margin-top: 20px;
+      } 
+
+      #port-item-header{
+        padding: 10px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: lightgray;
+      }
+
+      #port-item-lhead{
+        display: flex;
+      }
+
+      #port-item-rhead{
+        display: flex;
+        gap: 10px;
+        font-size: 12px;
+      }
+
+      #port-item-desc{
+        padding: 10px;
+        background-color: rgba(211, 211, 211, 0.5);
+      }
+
+      .tech{
+        margin-left: 10px;
+        font-size: 10px;
+        align-self: center;
+      }
+
+      a{
+        color: rgb(0, 110, 255);
+      }
+
+    </style>
+  </head>
+  <body>
+    <div id="view">
+        <div id="contact">
+          <i class="fa fa-envelope"></i>
+          <span id="country">alex.m.olteanu@gmail.com</span>
+        </div>
+      <div id="header">
+        <span id="name">Alex Olteanu</span>
+        <br>
+        <span id="title">Software Developer</span>
+      </div>
+      
+      <div id="main">
+        <div id="nav">
+          <div class="nav-item">Knowledge & Skills</div>
+          <div class="nav-item">Porfolio</div>
+        </div>
+        <div id="content">
+          <div id="kns" class="content">
+            <ul>
+              <li>Java, C#, HTML/CSS/Javascript</li>
+              <li>IntelliJ, Visual Studio, Git, JIRA</li>
+              <li>SQL Server, MySQL, Oracle, SQLite</li>
+              <li>Windows, Unix</li>
+              <li>Agile (Scrum), requirements analysis, SOLID principles, front-end, back-end</li>
+            </ul>
+          </div>
+          <div id="portfolio" class="content">
+            <div id="port-item">
+              <div id="port-item-header">
+                <div id="port-item-lhead">
+                  <b>Crossword</b>
+                  <span class="tech">
+                    <svg class="circle" height="8" width="8" fill="orange"><circle cx="4" cy="4" r="4"></svg>
+                    HTML
+                  </span>
+                  <span class="tech">
+                    <svg class="circle" height="8" width="8" fill="limegreen"><circle cx="4" cy="4" r="4"></svg>
+                    CSS
+                  </span>
+                  <span class="tech">
+                    <svg class="circle" height="8" width="8" fill="gold"><circle cx="4" cy="4" r="4"></svg>
+                    JS
+                  </span>
+                </div>
+                <div id="port-item-rhead">
+                  <a href="https://github.com/axolteanu/crossword" target="_blank">GitHub</a>
+                </div>
+              </div>
+              <div id="port-item-desc">
+                Crossword presenter using pure HTML, CSS and JS.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <script>
+        var nNavItems = 0;
+        var navItemElems = document.getElementsByClassName('nav-item');
+        var contentElems = document.getElementsByClassName('content');
+        
+        for(let i = 0; i < navItemElems.length; i++){
+            navItemElems[i].addEventListener('click', e =>{
+            selectContent(i);
+          });
+          nNavItems++;
+        }
+
+        selectContent(1);
+
+        function selectContent(selectedIndex){
+          let navItemElem = navItemElems[selectedIndex];
+          navItemElem.style.color = 'black';
+          navItemElem.style.textDecoration = 'solid underline dodgerblue 4px';
+          navItemElem.style.textUnderlineOffset = '7px';
+          let contentElem = contentElems[selectedIndex];
+          contentElem.style.display = 'block';
+
+          for(let i = 0; i < nNavItems; i++){
+            if(i != selectedIndex){
+              navItemElems[i].style.textDecoration = 'none';
+              navItemElems[i].style.color = 'gray';
+              contentElems[i].style.display = 'none';
+            }
+          }          
+        }
+      </script>
+    </div>
+  </body>
+</html>
